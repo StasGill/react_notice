@@ -1,0 +1,61 @@
+.header {
+    &_container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        margin: 0 10px;
+    }
+
+    &_avatar {
+        width: 43px;
+        height: 43px;
+        border-radius: 50%;
+        background-color: #4abdff;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        cursor: pointer;
+
+        &_image {
+            width: 43px;
+            height: 43px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    }
+
+    &_logo {
+        font-size: 36px;
+        color: #00A3FF;
+        transition: all 0.4s ease-in-out;
+        cursor: pointer;
+
+        span {
+            font-weight: 900;
+        }
+
+        svg {
+            fill: #00A3FF;
+            margin-left: 8px;
+            transition: all 0.4s ease-in-out;
+        }
+
+        &:hover svg {
+            fill: #4abdff;
+        }
+
+        &:hover {
+            color: #4abdff;
+        }
+    }
+}
+
+.padding {
+    padding-top: 5px;
+}

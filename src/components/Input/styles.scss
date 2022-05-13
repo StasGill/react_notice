@@ -1,0 +1,25 @@
+.input {
+    text-align: left;
+
+    &_box {
+        border: none;
+        box-sizing: border-box;
+        background-color: #F5F5F5;
+        border-radius: 8px;
+        height: 50px;
+        display: block;
+        font-size: 19px;
+        color: #6C6C6C;
+        width: 100%;
+        // padding: 0 4%;
+        margin-bottom: 10px;
+        padding: 0 10px;
+    }
+
+    span {
+        font-size: 19px;
+        display: block;
+        color: #6C6C6C;
+        padding-bottom: 10px;
+    }
+}

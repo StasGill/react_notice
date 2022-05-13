@@ -1,0 +1,47 @@
+.auth {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    margin: 0 10px;
+    text-align: center;
+
+    &_left {
+        width: 50%;
+        margin: 0 30px 0 0;
+
+        h1 {
+            margin-bottom: 0;
+        }
+
+        svg {
+            width: 90%;
+            opacity: 0.6;
+
+        }
+    }
+
+    &_right {
+        width: 50%;
+    }
+}
+
+.link {
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+
+.input_container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.button_container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}

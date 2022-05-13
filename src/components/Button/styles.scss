@@ -1,0 +1,38 @@
+.button {
+    border: none;
+    color: white;
+    font-size: 24px;
+    font-weight: 900;
+    border-radius: 8px;
+    padding: 10px 30px;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.primary {
+    background-color: #00A3FF;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        background-color: #4abdff;
+    }
+
+    &:focus {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+    }
+}
+
+.secondary {
+    background-color: #FF7373;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        background-color: #ff9292;
+    }
+
+    &:focus {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+    }
+}
