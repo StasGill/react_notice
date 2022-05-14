@@ -21,10 +21,18 @@
             opacity: 0.6;
 
         }
+
+        @media (max-width: 700px) {
+            display: none;
+        }
     }
 
     &_right {
         width: 50%;
+
+        @media (max-width: 700px) {
+            width: 100%;
+        }
     }
 }
 

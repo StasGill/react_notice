@@ -2,10 +2,12 @@ import React, { useState, useEffect, useCallback } from "react";
 import { Logo } from "../../assets/Logo";
 import { NavLink, useLocation } from "react-router-dom";
 import decode from "jwt-decode";
-import "./styles.scss";
 import { firstLetter } from "../../helpers/firstLetter";
 import { LOGOUT } from "../../constants/constants";
 import { useDispatch } from "react-redux";
+import { Button } from "../Button/Button";
+import { addDrawerAction } from "../../actions/user";
+import "./styles.scss";
 
 export const Header = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -17,6 +19,10 @@ export const Header = () => {
 
     setUser(null);
   }, [dispatch]);
+
+  const handleOpenAddDrawer = () => {
+    dispatch(addDrawerAction());
+  };
 
   useEffect(() => {
     const token = user?.user?.token;
@@ -41,16 +47,19 @@ export const Header = () => {
         </NavLink>
         <div>
           {user && (
-            <div className="header_avatar">
-              {user?.user?.imageUrl ? (
-                <img
-                  className="header_avatar_image"
-                  alt={user?.user?.name}
-                  src={user?.user?.imageUrl}
-                />
-              ) : (
-                firstLetter(user?.user?.name)
-              )}
+            <div className="user_container">
+              <Button text="+" onClick={handleOpenAddDrawer} />
+              <div className="header_avatar">
+                {user?.user?.imageUrl ? (
+                  <img
+                    className="header_avatar_image"
+                    alt={user?.user?.name}
+                    src={user?.user?.imageUrl}
+                  />
+                ) : (
+                  firstLetter(user?.user?.name)
+                )}
+              </div>
             </div>
           )}
         </div>

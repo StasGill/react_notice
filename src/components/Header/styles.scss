@@ -10,8 +10,8 @@
     }
 
     &_avatar {
-        width: 43px;
-        height: 43px;
+        width: 47px;
+        height: 47px;
         border-radius: 50%;
         background-color: #4abdff;
         font-weight: bold;
@@ -23,8 +23,8 @@
         cursor: pointer;
 
         &_image {
-            width: 43px;
-            height: 43px;
+            width: 47px;
+            height: 47px;
             border-radius: 50%;
             cursor: pointer;
         }
@@ -58,4 +58,10 @@
 
 .padding {
     padding-top: 5px;
+}
+
+.user_container {
+    display: flex;
+    width: 150px;
+    justify-content: space-between;
 }
