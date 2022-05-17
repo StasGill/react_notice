@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Logo } from "../../assets/Logo";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import decode from "jwt-decode";
 import { firstLetter } from "../../helpers/firstLetter";
 import { LOGOUT } from "../../constants/constants";
@@ -14,12 +14,15 @@ export const Header = () => {
   const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
+  const history = useNavigate();
 
   const logOut = useCallback(() => {
     dispatch({ type: LOGOUT });
 
     setUser(null);
-  }, [dispatch]);
+    history("/auth");
+    setVisible(false);
+  }, [dispatch, history]);
 
   const handleOpenAddDrawer = () => {
     dispatch(addDrawerAction());
