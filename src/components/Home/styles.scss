@@ -21,6 +21,34 @@
         padding: 10px;
         width: 60%;
         background-color: white;
+        text-align: center;
+
+
+        &_container {
+            display: flex;
+            justify-content: space-between;
+
+            button {
+                background: none repeat scroll 0 0 transparent;
+                border: none;
+                padding: 0 10px;
+                cursor: pointer;
+                font-size: 40px;
+                color: #5A5A5A;
+            }
+
+
+            // input {
+            //     background-color: grey;
+            // }
+        }
+    }
+
+    &_divider {
+        box-sizing: border-box;
+        width: 100%;
+        height: 2px;
+        background-color: rgba(128, 128, 128, 0.447);
     }
 }
 
@@ -49,4 +77,31 @@
     height: 5px;
     background-color: rgba(0, 0, 0, 0.634);
     margin: 0 auto;
+}
+
+.task_item {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+        background: none repeat scroll 0 0 transparent;
+        border: none;
+        padding: 0 10px;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 900;
+        color: #5A5A5A;
+    }
+
+    input {
+        height: 35px;
+    }
+
+    #dots {
+        fill: #5A5A5A;
+    }
+
+    &_container {
+        display: flex;
+    }
 }

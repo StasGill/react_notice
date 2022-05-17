@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Input } from "../Input/Input";
 import { Button } from "../Button/Button";
 import { GoogleLogin } from "react-google-login";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import "./styles.scss";
 import { ListIcon } from "../../assets/ListIcon";
 import { AUTH } from "../../constants/constants";
@@ -24,6 +24,10 @@ export const Auth = () => {
   const [user] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
   const history = useNavigate();
+
+  if (user) {
+    return <Navigate to="/" replace />;
+  }
 
   const googleSuccess = async (res) => {
     const user = res?.profileObj;
@@ -56,9 +60,9 @@ export const Auth = () => {
     setRegisterData({ ...registrationObject });
   };
 
-  useEffect(() => {
-    user && history("/");
-  }, [history, user]);
+  // useEffect(() => {
+  //   user && history("/");
+  // }, [history, user]);
 
   return (
     <div className="container">

@@ -7,6 +7,8 @@ import {
   UPDATE_LIST,
   ADD_LIST,
   DELETE_LIST,
+  ADD_TASK,
+  DELETE_TASK,
 } from "../constants/constants";
 
 const userReducer = (
@@ -16,6 +18,7 @@ const userReducer = (
     editDrawer: false,
     lists: [],
     currentList: { title: "", color: "", _id: "" },
+    currentTasks: {},
   },
   action
 ) => {
@@ -29,13 +32,33 @@ const userReducer = (
     case CURRENT_LIST:
       return { ...state, currentList: action?.item };
     case GET_LISTS:
-      return { ...state, lists: action?.data };
+      return {
+        ...state,
+        lists: action?.data,
+        currentList: action?.updatedList,
+      };
     case ADD_LIST:
       return { ...state, lists: action?.data };
     case UPDATE_LIST:
-      return { ...state, lists: action?.data };
+      return {
+        ...state,
+        lists: action?.data,
+        currentList: action?.currentList,
+      };
     case DELETE_LIST:
       return { ...state, lists: action?.data };
+    case ADD_TASK:
+      return {
+        ...state,
+        lists: action?.data,
+        currentList: action?.currentList,
+      };
+    case DELETE_TASK:
+      return {
+        ...state,
+        lists: action?.data,
+        currentList: action?.currentList,
+      };
 
     default:
       return state;

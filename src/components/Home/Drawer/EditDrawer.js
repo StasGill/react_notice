@@ -11,18 +11,18 @@ import { Button } from "../../Button/Button";
 import { Radio } from "@mui/material";
 
 const colors = [
-  "green",
-  "red",
-  "blue",
-  "BlueViolet",
-  "HotPink",
-  "AntiqueWhite",
+  "#008000",
+  "#ff0000",
+  "#0000ff",
+  "#892be2",
+  "#ff69b4",
+  "#faebd7",
 ];
 
 export const EditDrawer = () => {
   const { editDrawer, currentList } = useSelector((state) => state.user);
-  const [listName, setListName] = useState(currentList.title);
-  const [selectedColor, setSelectedColor] = useState(currentList.color);
+  const [listName, setListName] = useState(currentList?.title);
+  const [selectedColor, setSelectedColor] = useState(currentList?.color);
   const dispatch = useDispatch();
 
   const handleOpenAddDrawer = () => {
@@ -34,7 +34,12 @@ export const EditDrawer = () => {
   };
 
   const handleSubmit = () => {
-    dispatch(updateList({ listName, selectedColor, id: currentList._id }));
+    dispatch(
+      updateList(
+        { listName, selectedColor, id: currentList._id },
+        currentList._id
+      )
+    );
     dispatch(editDrawerAction());
   };
 
@@ -52,8 +57,8 @@ export const EditDrawer = () => {
   });
 
   useEffect(() => {
-    setListName(currentList.title);
-    setSelectedColor(currentList.color);
+    setListName(currentList?.title);
+    setSelectedColor(currentList?.color);
   }, [currentList]);
 
   return (

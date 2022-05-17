@@ -11,8 +11,16 @@ export const ListItem = ({ title, color, item }) => {
     dispatch(setCurrentList(item));
   };
 
+  const openList = () => {
+    dispatch(setCurrentList(item));
+  };
+
   return (
-    <div className="list-item" style={{ background: color }}>
+    <div
+      className="list-item"
+      style={{ background: `${color}70` }}
+      onClick={openList}
+    >
       <p>{title}</p>
       <button onClick={handleClick}>
         <DotsIcon />

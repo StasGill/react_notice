@@ -1,29 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.scss";
 import { getList } from "../../actions/user";
 import { AddDrawer } from "./Drawer/AddDrawer";
 import { ListItem } from "./ListItem/ListItem";
 import { EditDrawer } from "./Drawer/EditDrawer";
+import { TaskSection } from "./TaskSection/TaskSection";
+import { Navigate } from "react-router-dom";
 
 export const Home = () => {
+  const { lists, currentList } = useSelector((state) => state.user);
   const [user] = useState(JSON.parse(localStorage.getItem("profile")));
-
-  const { lists } = useSelector((state) => state.user);
-  const history = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    !user && history("/auth");
     dispatch(getList());
-  }, [history, dispatch, user]);
+  }, [dispatch]);
 
+  if (!user) {
+    return <Navigate to="/auth" replace />;
+  }
   return (
     <div className="container">
       <div className="home">
         <div className="home_left">
-          {lists.map((item) => (
+          {lists?.map((item) => (
             <ListItem
               title={item.title}
               color={item.color}
@@ -32,7 +33,7 @@ export const Home = () => {
             />
           ))}
         </div>
-        <div className="home_right"> </div>
+        <TaskSection currentList={currentList?._id ? currentList : lists[0]} />
       </div>
       <AddDrawer />
       <EditDrawer />

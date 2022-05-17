@@ -7,18 +7,18 @@ import { Button } from "../../Button/Button";
 import { Radio } from "@mui/material";
 
 const colors = [
-  "green",
-  "red",
-  "blue",
-  "BlueViolet",
-  "HotPink",
-  "AntiqueWhite",
+  "#008000",
+  "#ff0000",
+  "#0000ff",
+  "#892be2",
+  "#ff69b4",
+  "#faebd7",
 ];
 
 export const AddDrawer = () => {
   const { addDrawer } = useSelector((state) => state.user);
   const [listName, setListName] = useState("");
-  const [selectedColor, setSelectedColor] = useState("green");
+  const [selectedColor, setSelectedColor] = useState("#0080007d");
   const dispatch = useDispatch();
 
   const handleOpenAddDrawer = () => {
