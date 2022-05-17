@@ -5,7 +5,7 @@ import { Input } from "../../Input/Input";
 import { TaskItem } from "../TaskItem/TaskItem";
 import "../styles.scss";
 
-export const TaskSection = ({ currentList }) => {
+export const TaskSection = ({ currentList, styles }) => {
   const [edit, setEdit] = useState(false);
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
@@ -19,9 +19,10 @@ export const TaskSection = ({ currentList }) => {
     setEdit(!edit);
     setValue("");
   };
+
   return (
     <div
-      className="home_right"
+      className={`home_right ${styles}`}
       style={{ background: `${currentList?.color}40` }}
     >
       <div className="home_right_container">

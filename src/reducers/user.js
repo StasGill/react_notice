@@ -9,6 +9,7 @@ import {
   DELETE_LIST,
   ADD_TASK,
   DELETE_TASK,
+  CURRENT_DRAWER,
 } from "../constants/constants";
 
 const userReducer = (
@@ -16,6 +17,7 @@ const userReducer = (
     isLoading: false,
     addDrawer: false,
     editDrawer: false,
+    currentTaskDrawer: false,
     lists: [],
     currentList: { title: "", color: "", _id: "" },
     currentTasks: {},
@@ -29,13 +31,15 @@ const userReducer = (
       return { ...state, addDrawer: !state.addDrawer };
     case EDIT_DRAWER:
       return { ...state, editDrawer: !state.editDrawer };
+    case CURRENT_DRAWER:
+      return { ...state, currentTaskDrawer: !state.currentTaskDrawer };
     case CURRENT_LIST:
       return { ...state, currentList: action?.item };
     case GET_LISTS:
       return {
         ...state,
         lists: action?.data,
-        currentList: action?.updatedList,
+        currentList: action?.currentList,
       };
     case ADD_LIST:
       return { ...state, lists: action?.data };

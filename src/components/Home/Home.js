@@ -6,20 +6,34 @@ import { AddDrawer } from "./Drawer/AddDrawer";
 import { ListItem } from "./ListItem/ListItem";
 import { EditDrawer } from "./Drawer/EditDrawer";
 import { TaskSection } from "./TaskSection/TaskSection";
-import { Navigate } from "react-router-dom";
+import { Navigate, useSearchParams } from "react-router-dom";
+import { CurrentTaskDrawer } from "./Drawer/CurrentTaskDrawer";
+import { useWindowSize } from "../../helpers/useWindowSize";
 
 export const Home = () => {
   const { lists, currentList } = useSelector((state) => state.user);
   const [user] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
+  const [searchParams] = useSearchParams();
+  const currentIdList = searchParams.get("list");
+  const size = useWindowSize();
+  const isMobile = size.width < 700;
 
   useEffect(() => {
-    dispatch(getList());
-  }, [dispatch]);
+    dispatch(getList(currentIdList));
+  }, [dispatch, currentIdList, user]);
+
+  //  useEffect(() => {
+  //   console.log(currentIdList, lists);
+  //   const test = lists.find((item) => item._id === currentIdList);
+  //   console.log(test);
+  //   setCurrentList2(test);
+  // }, [currentIdList]);
 
   if (!user) {
     return <Navigate to="/auth" replace />;
   }
+
   return (
     <div className="container">
       <div className="home">
@@ -30,11 +44,20 @@ export const Home = () => {
               color={item.color}
               key={item._id}
               item={item}
+              id={item._id}
             />
           ))}
         </div>
-        <TaskSection currentList={currentList?._id ? currentList : lists[0]} />
+        <TaskSection
+          currentList={currentList?._id ? currentList : lists[0]}
+          styles="desktop"
+        />
       </div>
+      {isMobile && (
+        <CurrentTaskDrawer
+          currentList={currentList?._id ? currentList : lists[0]}
+        />
+      )}
       <AddDrawer />
       <EditDrawer />
     </div>

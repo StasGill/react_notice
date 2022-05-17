@@ -12,6 +12,10 @@
         background-color: white;
         height: 85vh;
         overflow: scroll;
+
+        @media (max-width: 700px) {
+            width: 100%;
+        }
     }
 
     &_right {
@@ -19,9 +23,11 @@
         border-radius: 8px;
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
         padding: 10px;
-        width: 60%;
+
         background-color: white;
         text-align: center;
+
+
 
 
         &_container {
@@ -36,11 +42,6 @@
                 font-size: 40px;
                 color: #5A5A5A;
             }
-
-
-            // input {
-            //     background-color: grey;
-            // }
         }
     }
 
@@ -59,7 +60,7 @@
     overflow: 'visible';
     box-sizing: border-box;
     text-align: center;
-    padding: 10px 10px 20px 10px;
+    // padding: 10px 10px 20px 10px;
 
     @media (max-width: 700px) {
         width: 100%;
@@ -67,16 +68,19 @@
 }
 
 .radio_container {
-    display: flex;
+    // display: flex;
     margin: 10px auto 10px;
     transform: scale(1.5);
 }
 
 .touch_line {
-    width: 60px;
+    width: 10%;
     height: 5px;
     background-color: rgba(0, 0, 0, 0.634);
     margin: 0 auto;
+    position: absolute;
+    top: 4px;
+    left: 45%;
 }
 
 .task_item {
@@ -103,5 +107,31 @@
 
     &_container {
         display: flex;
+    }
+}
+
+.desktop {
+    width: 60%;
+
+    @media (max-width: 700px) {
+        display: none;
+    }
+}
+
+.mobile {
+    width: 100%;
+
+    max-height: 80vh;
+    overflow: scroll;
+
+}
+
+.drawer_container {
+    margin: 10px;
+    box-sizing: border-box;
+
+    button {
+        display: block;
+        width: 100%;
     }
 }

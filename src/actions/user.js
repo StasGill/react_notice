@@ -10,6 +10,7 @@ import {
   UPDATE_TASK,
   DELETE_TASK,
   GET_TASKS,
+  CURRENT_DRAWER,
 } from "../constants/constants";
 import * as api from "../api/index.js";
 
@@ -23,8 +24,16 @@ export const editDrawerAction = () => async (dispatch) => {
   dispatch({ type: EDIT_DRAWER });
 };
 
+export const currentListDrawerAction = () => async (dispatch) => {
+  dispatch({ type: CURRENT_DRAWER });
+};
+
 export const setCurrentList = (item) => async (dispatch) => {
   dispatch({ type: CURRENT_LIST, item });
+};
+
+export const setCurrentList2 = (index) => async (dispatch) => {
+  dispatch({ type: CURRENT_LIST, index });
 };
 
 //  ============================= List CRUD Actions =================
@@ -60,13 +69,15 @@ export const deleteList = (formData) => async (dispatch) => {
   }
 };
 
-export const getList = () => async (dispatch) => {
+export const getList = (currentIdList) => async (dispatch) => {
   try {
     const { data } = await api.getList();
-    dispatch({ type: GET_LISTS, data });
+    const currentList = data.find((item) => item._id === currentIdList);
+    dispatch({ type: GET_LISTS, data, currentList });
   } catch (error) {
     console.log(error);
   }
+
   // try {
   //   let updatedList;
   //   const { data } = await api.getList();

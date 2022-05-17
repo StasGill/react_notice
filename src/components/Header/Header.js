@@ -11,6 +11,7 @@ import "./styles.scss";
 
 export const Header = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -49,7 +50,10 @@ export const Header = () => {
           {user && (
             <div className="user_container">
               <Button text="+" onClick={handleOpenAddDrawer} />
-              <div className="header_avatar">
+              <div
+                className="header_avatar"
+                onClick={() => setVisible(!visible)}
+              >
                 {user?.user?.imageUrl ? (
                   <img
                     className="header_avatar_image"
@@ -63,6 +67,11 @@ export const Header = () => {
             </div>
           )}
         </div>
+        {visible && (
+          <div className="header_menu ">
+            <Button text="sign out" type="secondary" onClick={logOut} />
+          </div>
+        )}
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ export const LOGOUT = "LOGOUT";
 
 export const ADD_DRAWER = "ADD_DRAWER";
 export const EDIT_DRAWER = "EDIT_DRAWER";
+export const CURRENT_DRAWER = "CURRENT_DRAWER";
 
 export const ADD_LIST = "ADD_LIST";
 export const UPDATE_LIST = "UPDATE_LIST";

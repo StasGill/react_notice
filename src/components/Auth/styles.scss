@@ -50,6 +50,7 @@
 
 .button_container {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    // justify-content: space-around;
     width: 100%;
 }

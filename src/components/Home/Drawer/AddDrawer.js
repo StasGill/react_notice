@@ -50,29 +50,31 @@ export const AddDrawer = () => {
       onClose={handleOpenAddDrawer}
       onOpen={handleOpenAddDrawer}
     >
-      <div className="touch_line"></div>
-      <h1>Add list</h1>
-      <Input
-        placeholder="Task"
-        value={listName}
-        name="task"
-        onChange={(e) => setListName(e.target.value)}
-      />
-      <div className="radio_container">
-        {colors.map((item) => (
-          <Radio
-            key={item}
-            {...controlProps(item)}
-            sx={{
-              color: item,
-              "&.Mui-checked": {
+      <div className="drawer_container">
+        <div className="touch_line"></div>
+        <h1>Add list</h1>
+        <Input
+          placeholder="Task"
+          value={listName}
+          name="task"
+          onChange={(e) => setListName(e.target.value)}
+        />
+        <div className="radio_container">
+          {colors.map((item) => (
+            <Radio
+              key={item}
+              {...controlProps(item)}
+              sx={{
                 color: item,
-              },
-            }}
-          />
-        ))}
+                "&.Mui-checked": {
+                  color: item,
+                },
+              }}
+            />
+          ))}
+        </div>
+        <Button text="Add task" styles="margin-top" onClick={handleSubmit} />
       </div>
-      <Button text="Add task" styles="margin-top" onClick={handleSubmit} />
     </SwipeableDrawer>
   );
 };

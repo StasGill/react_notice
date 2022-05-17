@@ -60,10 +60,6 @@ export const Auth = () => {
     setRegisterData({ ...registrationObject });
   };
 
-  // useEffect(() => {
-  //   user && history("/");
-  // }, [history, user]);
-
   return (
     <div className="container">
       <div className="auth">
