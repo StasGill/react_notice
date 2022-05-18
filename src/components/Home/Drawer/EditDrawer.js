@@ -72,7 +72,7 @@ export const EditDrawer = () => {
         <div className="touch_line"></div>
         <h1>Edit list</h1>
         <Input
-          placeholder="Task"
+          placeholder=""
           value={listName}
           name="task"
           onChange={(e) => setListName(e.target.value)}

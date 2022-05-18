@@ -27,12 +27,8 @@ export const ListItem = ({ title, color, item, id }) => {
   };
 
   return (
-    <div
-      className="list-item"
-      style={{ background: `${color}70` }}
-      onClick={openList}
-    >
-      <p>{title}</p>
+    <div className="list-item" style={{ background: `${color}70` }}>
+      <p onClick={openList}>{title}</p>
       <button onClick={handleClick}>
         <DotsIcon />
       </button>

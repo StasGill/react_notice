@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Logo } from "../../assets/Logo";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import decode from "jwt-decode";
 import { firstLetter } from "../../helpers/firstLetter";
 import { LOGOUT } from "../../constants/constants";
 import { useDispatch } from "react-redux";
 import { Button } from "../Button/Button";
 import { addDrawerAction } from "../../actions/user";
+import ClickAwayListener from "react-click-away-listener";
+
 import "./styles.scss";
 
 export const Header = () => {
@@ -14,15 +16,19 @@ export const Header = () => {
   const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
-  const history = useNavigate();
+
+  const openMenu = (e) => {
+    setVisible(!visible);
+  };
 
   const logOut = useCallback(() => {
     dispatch({ type: LOGOUT });
 
     setUser(null);
-    history("/auth");
+    localStorage.setItem("profile", null);
+
     setVisible(false);
-  }, [dispatch, history]);
+  }, [dispatch]);
 
   const handleOpenAddDrawer = () => {
     dispatch(addDrawerAction());
@@ -53,10 +59,7 @@ export const Header = () => {
           {user && (
             <div className="user_container">
               <Button text="+" onClick={handleOpenAddDrawer} />
-              <div
-                className="header_avatar"
-                onClick={() => setVisible(!visible)}
-              >
+              <div className="header_avatar" onClick={openMenu}>
                 {user?.user?.imageUrl ? (
                   <img
                     className="header_avatar_image"
@@ -71,9 +74,11 @@ export const Header = () => {
           )}
         </div>
         {visible && (
-          <div className="header_menu ">
-            <Button text="sign out" type="secondary" onClick={logOut} />
-          </div>
+          <ClickAwayListener onClickAway={openMenu}>
+            <div className="header_menu ">
+              <Button text="sign out" type="secondary" onClick={logOut} />
+            </div>
+          </ClickAwayListener>
         )}
       </div>
     </div>

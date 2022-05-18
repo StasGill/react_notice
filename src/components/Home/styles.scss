@@ -11,7 +11,7 @@
         width: 38%;
         background-color: white;
         height: 85vh;
-        overflow: scroll;
+        overflow: hidden;
 
         @media (max-width: 700px) {
             width: 100%;
@@ -23,12 +23,8 @@
         border-radius: 8px;
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
         padding: 10px;
-
         background-color: white;
         text-align: center;
-
-
-
 
         &_container {
             display: flex;
@@ -60,7 +56,6 @@
     overflow: 'visible';
     box-sizing: border-box;
     text-align: center;
-    // padding: 10px 10px 20px 10px;
 
     @media (max-width: 700px) {
         width: 100%;
@@ -68,9 +63,10 @@
 }
 
 .radio_container {
-    // display: flex;
-    margin: 10px auto 10px;
-    transform: scale(1.5);
+    box-sizing: border-box;
+    width: 300px;
+    margin: 20px auto 20px;
+    transform: scale(1.2);
 }
 
 .touch_line {
@@ -83,33 +79,6 @@
     left: 45%;
 }
 
-.task_item {
-    display: flex;
-    justify-content: space-between;
-
-    button {
-        background: none repeat scroll 0 0 transparent;
-        border: none;
-        padding: 0 10px;
-        cursor: pointer;
-        font-size: 20px;
-        font-weight: 900;
-        color: #5A5A5A;
-    }
-
-    input {
-        height: 35px;
-    }
-
-    #dots {
-        fill: #5A5A5A;
-    }
-
-    &_container {
-        display: flex;
-    }
-}
-
 .desktop {
     width: 60%;
 
@@ -120,14 +89,12 @@
 
 .mobile {
     width: 100%;
-
-    max-height: 80vh;
+    height: 80vh;
     overflow: scroll;
-
 }
 
 .drawer_container {
-    margin: 10px;
+    margin: 10px 10px 30px 10px;
     box-sizing: border-box;
 
     button {

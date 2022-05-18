@@ -20,7 +20,6 @@ const registrationObject = {
 export const Auth = () => {
   const [isAuth, setIsAuth] = useState(false);
   const [registerData, setRegisterData] = useState({ ...registrationObject });
-
   const [user] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
   const history = useNavigate();

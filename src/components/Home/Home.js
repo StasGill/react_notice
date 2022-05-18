@@ -6,7 +6,7 @@ import { AddDrawer } from "./Drawer/AddDrawer";
 import { ListItem } from "./ListItem/ListItem";
 import { EditDrawer } from "./Drawer/EditDrawer";
 import { TaskSection } from "./TaskSection/TaskSection";
-import { Navigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { CurrentTaskDrawer } from "./Drawer/CurrentTaskDrawer";
 import { useWindowSize } from "../../helpers/useWindowSize";
 
@@ -17,22 +17,13 @@ export const Home = () => {
   const [searchParams] = useSearchParams();
   const currentIdList = searchParams.get("list");
   const size = useWindowSize();
+  const navigate = useNavigate();
   const isMobile = size.width < 700;
 
   useEffect(() => {
+    if (!user) navigate("/auth");
     dispatch(getList(currentIdList));
   }, [dispatch, currentIdList, user]);
-
-  //  useEffect(() => {
-  //   console.log(currentIdList, lists);
-  //   const test = lists.find((item) => item._id === currentIdList);
-  //   console.log(test);
-  //   setCurrentList2(test);
-  // }, [currentIdList]);
-
-  if (!user) {
-    return <Navigate to="/auth" replace />;
-  }
 
   return (
     <div className="container">

@@ -1,0 +1,30 @@
+.task_item {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+        background: none repeat scroll 0 0 transparent;
+        border: none;
+        padding: 0 10px;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 900;
+        color: #5A5A5A;
+    }
+
+    input {
+        height: 35px;
+    }
+
+    #dots {
+        fill: #5A5A5A;
+    }
+
+    &_container {
+        display: flex;
+    }
+}
+
+.decorate {
+    text-decoration: line-through;
+}

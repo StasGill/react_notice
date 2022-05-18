@@ -6,6 +6,7 @@ import { DeleteIcon } from "../../../assets/DeleteIcon";
 import { DotsIcon } from "../../../assets/DotsIcon";
 import { EditIcon } from "../../../assets/EditIcon";
 import { Input } from "../../Input/Input";
+import "./styles.scss";
 
 export const TaskItem = ({ title, isValid, id, currentListId, listId }) => {
   const [show, setShow] = useState(false);
@@ -55,7 +56,7 @@ export const TaskItem = ({ title, isValid, id, currentListId, listId }) => {
               <button onClick={handleUpdate}>save</button>
             </>
           ) : (
-            <p>{text}</p>
+            <p className={isCheck ? "decorate" : ""}>{text}</p>
           )}
         </div>
         <div className="task_item_container">
