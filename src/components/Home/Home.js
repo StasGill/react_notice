@@ -23,7 +23,7 @@ export const Home = () => {
   useEffect(() => {
     if (!user) navigate("/auth");
     dispatch(getList(currentIdList));
-  }, [dispatch, currentIdList, user]);
+  }, [dispatch, currentIdList, user, navigate]);
 
   return (
     <div className="container">
