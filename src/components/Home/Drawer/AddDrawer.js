@@ -5,6 +5,7 @@ import { addDrawerAction, addList } from "../../../actions/user";
 import { Input } from "../../Input/Input";
 import { Button } from "../../Button/Button";
 import { Radio } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const colors = [
   "#008000",
@@ -20,6 +21,7 @@ export const AddDrawer = () => {
   const [listName, setListName] = useState("");
   const [selectedColor, setSelectedColor] = useState("#008000");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleOpenAddDrawer = () => {
     dispatch(addDrawerAction());
@@ -30,7 +32,7 @@ export const AddDrawer = () => {
   };
 
   const handleSubmit = () => {
-    dispatch(addList({ listName, selectedColor }));
+    dispatch(addList({ listName, selectedColor }, navigate));
     dispatch(addDrawerAction());
     setListName("");
   };

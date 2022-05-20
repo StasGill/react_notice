@@ -32,16 +32,17 @@ export const TaskSection = ({ currentList, styles }) => {
         )}
         <button onClick={addTasks}>+</button>
       </div>
-      {currentList?.tasks?.map((task) => (
-        <TaskItem
-          title={task.title}
-          isValid={task.isValid}
-          key={task._id}
-          id={task._id}
-          currentListId={currentList._id}
-          listId={task.listId}
-        />
-      ))}
+      {currentList &&
+        currentList?.tasks?.map((task) => (
+          <TaskItem
+            title={task.title}
+            isValid={task.isValid}
+            key={task._id}
+            id={task._id}
+            currentListId={currentList._id}
+            listId={task.listId}
+          />
+        ))}
 
       <div className="home_divider"></div>
     </div>

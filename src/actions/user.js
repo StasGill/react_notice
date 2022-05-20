@@ -38,11 +38,12 @@ export const setCurrentList2 = (index) => async (dispatch) => {
 
 //  ============================= List CRUD Actions =================
 
-export const addList = (formData) => async (dispatch) => {
+export const addList = (formData, navigate) => async (dispatch) => {
   try {
     const { data } = await api.addList(formData);
-    const lastIndex = data.length - 1;
+    const lastIndex = data?.length - 1;
     const item = data[lastIndex];
+    item && navigate(`/?list=${item._id}`);
 
     dispatch({ type: ADD_LIST, data });
     dispatch({ type: CURRENT_LIST, item });
