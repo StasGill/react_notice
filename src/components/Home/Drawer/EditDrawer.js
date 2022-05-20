@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   deleteList,
   editDrawerAction,
+  setCurrentList2,
   updateList,
 } from "../../../actions/user";
 import { Input } from "../../Input/Input";
@@ -46,6 +47,7 @@ export const EditDrawer = () => {
   const handleDelete = () => {
     dispatch(deleteList({ id: currentList._id }));
     dispatch(editDrawerAction());
+    dispatch(setCurrentList2(0));
   };
 
   const controlProps = (item) => ({

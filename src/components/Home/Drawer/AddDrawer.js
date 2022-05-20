@@ -18,7 +18,7 @@ const colors = [
 export const AddDrawer = () => {
   const { addDrawer } = useSelector((state) => state.user);
   const [listName, setListName] = useState("");
-  const [selectedColor, setSelectedColor] = useState("#0080007d");
+  const [selectedColor, setSelectedColor] = useState("#008000");
   const dispatch = useDispatch();
 
   const handleOpenAddDrawer = () => {

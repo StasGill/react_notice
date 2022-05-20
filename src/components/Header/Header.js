@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Logo } from "../../assets/Logo";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import decode from "jwt-decode";
 import { firstLetter } from "../../helpers/firstLetter";
 import { LOGOUT } from "../../constants/constants";
@@ -16,8 +16,9 @@ export const Header = () => {
   const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const openMenu = (e) => {
+  const openMenu = () => {
     setVisible(!visible);
   };
 
@@ -28,7 +29,8 @@ export const Header = () => {
     localStorage.setItem("profile", null);
 
     setVisible(false);
-  }, [dispatch]);
+    navigate("/auth");
+  }, [dispatch, navigate]);
 
   const handleOpenAddDrawer = () => {
     dispatch(addDrawerAction());
@@ -76,6 +78,8 @@ export const Header = () => {
         {visible && (
           <ClickAwayListener onClickAway={openMenu}>
             <div className="header_menu ">
+              <h2>{user.user.name}</h2>
+              <p>{user.user.email}</p>
               <Button text="sign out" type="secondary" onClick={logOut} />
             </div>
           </ClickAwayListener>

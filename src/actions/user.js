@@ -41,7 +41,11 @@ export const setCurrentList2 = (index) => async (dispatch) => {
 export const addList = (formData) => async (dispatch) => {
   try {
     const { data } = await api.addList(formData);
+    const lastIndex = data.length - 1;
+    const item = data[lastIndex];
+
     dispatch({ type: ADD_LIST, data });
+    dispatch({ type: CURRENT_LIST, item });
   } catch (error) {
     console.log(error);
   }
