@@ -73,28 +73,17 @@ export const deleteList = (formData) => async (dispatch) => {
   }
 };
 
-export const getList = (currentIdList) => async (dispatch) => {
+export const getList = (navigate) => async (dispatch) => {
   try {
     const { data } = await api.getList();
-    const currentList = data.find((item) => item._id === currentIdList);
-    dispatch({ type: GET_LISTS, data, currentList });
+
+    const firstListId = data[0]._id;
+    firstListId && navigate(`/?list=${firstListId}`);
+
+    dispatch({ type: GET_LISTS, data });
   } catch (error) {
     console.log(error);
   }
-
-  // try {
-  //   let updatedList;
-  //   const { data } = await api.getList();
-  //   if (currentList._id) {
-  //     updatedList = data.find((item) => item._id === currentList._id);
-  //     dispatch({ type: GET_LISTS, data, updatedList });
-  //   } else {
-  //     updatedList = data[0];
-  //     dispatch({ type: GET_LISTS, data, updatedList });
-  //   }
-  // } catch (error) {
-  //   console.log(error);
-  // }
 };
 
 //  ============================= Task CRUD Actions =================

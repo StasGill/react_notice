@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   currentListDrawerAction,
@@ -9,8 +9,12 @@ import { DotsIcon } from "../../../assets/DotsIcon";
 import "./styles.scss";
 
 export const ListItem = ({ title, color, item, id }) => {
+  const { currentList } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const isActive = currentList?._id === id;
+  const isActiveClass = isActive ? "active-list" : "";
 
   const handleClick = () => {
     dispatch(editDrawerAction());
@@ -19,7 +23,7 @@ export const ListItem = ({ title, color, item, id }) => {
 
   const openList = () => {
     dispatch(currentListDrawerAction());
-    dispatch(setCurrentList(item));
+    // dispatch(setCurrentList(item));
     navigate({
       pathname: "/",
       search: `?list=${id}`,
@@ -27,7 +31,10 @@ export const ListItem = ({ title, color, item, id }) => {
   };
 
   return (
-    <div className="list-item" style={{ background: `${color}70` }}>
+    <div
+      className={`list-item ${isActiveClass}`}
+      style={{ background: `${color}70` }}
+    >
       <p onClick={openList}>{title}</p>
       <button onClick={handleClick}>
         <DotsIcon />

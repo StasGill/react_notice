@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.scss";
-import { getList } from "../../actions/user";
+import { getList, setCurrentList } from "../../actions/user";
 import { AddDrawer } from "./Drawer/AddDrawer";
 import { ListItem } from "./ListItem/ListItem";
 import { EditDrawer } from "./Drawer/EditDrawer";
@@ -19,11 +19,16 @@ export const Home = () => {
   const size = useWindowSize();
   const navigate = useNavigate();
   const isMobile = size.width < 700;
+  const currentLis = lists?.find((item) => item._id === currentIdList);
 
   useEffect(() => {
     if (!user) navigate("/auth");
-    dispatch(getList(currentIdList));
-  }, [dispatch, currentIdList, user, navigate]);
+    dispatch(getList(navigate));
+  }, [dispatch, user, navigate]);
+
+  useEffect(() => {
+    dispatch(setCurrentList(currentLis));
+  }, [dispatch, currentIdList, currentLis]);
 
   return (
     <div className="container">

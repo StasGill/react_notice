@@ -25,12 +25,6 @@
         h2 {
             margin-top: 0;
         }
-
-        // p {
-        //     font-weight: 900;
-        //     font-size: 23px;
-        //     margin-top: 0;
-        // }
     }
 
     &_backdrop {
@@ -42,8 +36,8 @@
     }
 
     &_avatar {
-        width: 40px;
-        height: 40px;
+        width: 46px;
+        height: 46px;
         border-radius: 50%;
         background-color: #4abdff;
         font-weight: bold;
@@ -55,8 +49,8 @@
         cursor: pointer;
 
         &_image {
-            width: 40px;
-            height: 40px;
+            width: 46px;
+            height: 46px;
             border-radius: 50%;
             cursor: pointer;
         }
@@ -66,10 +60,13 @@
         font-size: 36px;
         color: #00A3FF;
         transition: all 0.4s ease-in-out;
-        cursor: pointer;
+        height: 47.5px;
+        display: flex;
+        align-items: center;
 
         span {
             font-weight: 900;
+
         }
 
         svg {

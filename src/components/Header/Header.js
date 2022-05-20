@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Logo } from "../../assets/Logo";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import decode from "jwt-decode";
 import { firstLetter } from "../../helpers/firstLetter";
 import { LOGOUT } from "../../constants/constants";
@@ -51,12 +51,10 @@ export const Header = () => {
   return (
     <div className=" container">
       <div className="header_container ">
-        <NavLink to="/" className="link">
-          <div className="header header_logo">
-            <span>notice</span>
-            <Logo />
-          </div>
-        </NavLink>
+        <div className="header header_logo">
+          <span>notice</span>
+          <Logo />
+        </div>
         <div>
           {user && (
             <div className="user_container">
