@@ -14,7 +14,6 @@ import {
   SHARE_DRAWER,
   SET_SHARE,
   SET_ERROR,
-  LOGOUT,
 } from "../constants/constants";
 import * as api from "../api/index.js";
 
