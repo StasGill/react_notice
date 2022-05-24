@@ -1,4 +1,4 @@
-import { AUTH } from "../constants/constants";
+import { AUTH, SET_ERROR } from "../constants/constants";
 import * as api from "../api/index.js";
 
 export const signin = (formData, history) => async (dispatch) => {
@@ -9,6 +9,7 @@ export const signin = (formData, history) => async (dispatch) => {
 
     history("/");
   } catch (error) {
+    dispatch({ type: SET_ERROR, error: error.response.data.message });
     console.log(error);
   }
 };
@@ -21,6 +22,7 @@ export const signup = (formData, history) => async (dispatch) => {
 
     history("/");
   } catch (error) {
+    dispatch({ type: SET_ERROR, error: error.response.data.message });
     console.log(error);
   }
 };

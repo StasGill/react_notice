@@ -5,7 +5,7 @@
     border-radius: 8px;
     font-size: 22px;
     font-weight: bold;
-    padding: 0px 5px 0px 15px;
+    padding: 5px 5px 5px 15px;
     margin-bottom: 15px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     cursor: pointer;
@@ -29,8 +29,19 @@
 
     svg {
         fill: #5A5A5A;
-        transform: scale(1.5);
+        transition: all 0.5s ease-in-out;
 
+        &:hover {
+            fill: #00A3FF
+        }
+    }
+
+    .dots-icon {
+        padding-top: 9px;
+    }
+
+    .dots-icon>svg {
+        transform: scale(1.5);
     }
 
     button {

@@ -18,6 +18,7 @@ const colors = [
 
 export const AddDrawer = () => {
   const { addDrawer } = useSelector((state) => state.user);
+  const { authData } = useSelector((state) => state.auth);
   const [listName, setListName] = useState("");
   const [selectedColor, setSelectedColor] = useState("#008000");
   const dispatch = useDispatch();
@@ -32,7 +33,9 @@ export const AddDrawer = () => {
   };
 
   const handleSubmit = () => {
-    dispatch(addList({ listName, selectedColor }, navigate));
+    const name = JSON.parse(localStorage.getItem("profile"));
+    const userName = name?.user.name;
+    dispatch(addList({ listName, selectedColor, userName }, navigate));
     dispatch(addDrawerAction());
     setListName("");
   };

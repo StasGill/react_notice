@@ -8,7 +8,6 @@ import { useDispatch } from "react-redux";
 import { Button } from "../Button/Button";
 import { addDrawerAction } from "../../actions/user";
 import ClickAwayListener from "react-click-away-listener";
-
 import "./styles.scss";
 
 export const Header = () => {

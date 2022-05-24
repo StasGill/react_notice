@@ -5,6 +5,8 @@ export const Input = ({
   value = "",
   name,
   onChange = () => {},
+  required,
+  type,
 }) => {
   return (
     <div className="input">
@@ -14,6 +16,9 @@ export const Input = ({
         value={value}
         onChange={onChange}
         name={name}
+        required={required}
+        type={type}
+        autoComplete="off"
       />
     </div>
   );

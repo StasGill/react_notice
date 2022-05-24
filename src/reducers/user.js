@@ -10,6 +10,8 @@ import {
   ADD_TASK,
   DELETE_TASK,
   CURRENT_DRAWER,
+  SHARE_DRAWER,
+  SET_SHARE,
 } from "../constants/constants";
 
 const userReducer = (
@@ -17,10 +19,12 @@ const userReducer = (
     isLoading: false,
     addDrawer: false,
     editDrawer: false,
+    shareDrawer: false,
     currentTaskDrawer: false,
     lists: [],
     currentList: { title: "", color: "", _id: "" },
     currentTasks: {},
+    shareId: "",
   },
   action
 ) => {
@@ -33,8 +37,12 @@ const userReducer = (
       return { ...state, editDrawer: !state.editDrawer };
     case CURRENT_DRAWER:
       return { ...state, currentTaskDrawer: !state.currentTaskDrawer };
+    case SHARE_DRAWER:
+      return { ...state, shareDrawer: !state.shareDrawer };
     case CURRENT_LIST:
       return { ...state, currentList: action?.item };
+    case SET_SHARE:
+      return { ...state, shareId: action?.shareId };
     case GET_LISTS:
       return {
         ...state,

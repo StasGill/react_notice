@@ -1,15 +1,20 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   currentListDrawerAction,
   editDrawerAction,
   setCurrentList,
+  shareDrawerAction,
 } from "../../../actions/user";
 import { DotsIcon } from "../../../assets/DotsIcon";
+import { EditIcon } from "../../../assets/EditIcon";
+import { ShareIcon } from "../../../assets/ShareIcon";
 import "./styles.scss";
 
 export const ListItem = ({ title, color, item, id }) => {
   const { currentList } = useSelector((state) => state.user);
+  const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -19,6 +24,10 @@ export const ListItem = ({ title, color, item, id }) => {
   const handleClick = () => {
     dispatch(editDrawerAction());
     dispatch(setCurrentList(item));
+  };
+
+  const handleShare = () => {
+    dispatch(shareDrawerAction());
   };
 
   const openList = () => {
@@ -36,9 +45,21 @@ export const ListItem = ({ title, color, item, id }) => {
       style={{ background: `${color}70` }}
     >
       <p onClick={openList}>{title}</p>
-      <button onClick={handleClick}>
-        <DotsIcon />
-      </button>
+      <div className="task_item_container">
+        {show && (
+          <>
+            <button onClick={handleClick}>
+              <EditIcon />
+            </button>
+            <button onClick={handleShare}>
+              <ShareIcon />
+            </button>
+          </>
+        )}
+        <button onClick={() => setShow(!show)} className="dots-icon ">
+          <DotsIcon />
+        </button>
+      </div>
     </div>
   );
 };

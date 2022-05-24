@@ -11,6 +11,10 @@ import {
   DELETE_TASK,
   GET_TASKS,
   CURRENT_DRAWER,
+  SHARE_DRAWER,
+  SET_SHARE,
+  SET_ERROR,
+  LOGOUT,
 } from "../constants/constants";
 import * as api from "../api/index.js";
 
@@ -28,12 +32,30 @@ export const currentListDrawerAction = () => async (dispatch) => {
   dispatch({ type: CURRENT_DRAWER });
 };
 
+export const shareDrawerAction = () => async (dispatch) => {
+  dispatch({ type: SHARE_DRAWER });
+};
+
 export const setCurrentList = (item) => async (dispatch) => {
   dispatch({ type: CURRENT_LIST, item });
 };
 
 export const setCurrentList2 = (index) => async (dispatch) => {
   dispatch({ type: CURRENT_LIST, index });
+};
+
+export const setShareId = (shareId) => async (dispatch) => {
+  dispatch({ type: SET_SHARE, shareId });
+};
+
+export const addShareList = (shareId, userName) => async (dispatch) => {
+  try {
+    const { data } = await api.addShareList({ shareId, userName });
+    dispatch({ type: SET_SHARE, shareId: "" });
+    dispatch({ type: ADD_LIST, data });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 //  ============================= List CRUD Actions =================
@@ -78,11 +100,14 @@ export const getList = (navigate) => async (dispatch) => {
   try {
     const { data } = await api.getList();
 
-    const firstListId = data[0]._id;
+    const firstListId = data[0]?._id;
+
     firstListId && navigate(`/?list=${firstListId}`);
 
     dispatch({ type: GET_LISTS, data });
   } catch (error) {
+    dispatch({ type: SET_ERROR, error: error.response.data.message });
+
     console.log(error);
   }
 };

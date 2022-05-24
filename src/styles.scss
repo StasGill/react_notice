@@ -4,7 +4,7 @@
 .container {
     max-width: 1140px;
     min-width: 340px;
-    margin: 10px auto;
+    margin: 2vh auto;
     font-family: 'Rubik', sans-serif;
 
     @media (max-width: 450px) {
@@ -25,10 +25,18 @@ h2 {
     color: #5A5A5A;
 }
 
+h3 {
+    color: #5A5A5A;
+}
+
 p {
     color: #5A5A5A;
 }
 
 .italic {
     font-style: italic;
+}
+
+a {
+    text-decoration: none;
 }

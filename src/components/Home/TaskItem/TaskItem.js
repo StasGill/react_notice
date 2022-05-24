@@ -8,7 +8,22 @@ import { EditIcon } from "../../../assets/EditIcon";
 import { Input } from "../../Input/Input";
 import "./styles.scss";
 
-export const TaskItem = ({ title, isValid, id, currentListId, listId }) => {
+export const variant = ["primary", "secondary", "success", "warning", "info"];
+
+const userColor = (users, user) => {
+  const index = users?.findIndex((item) => item === user);
+  return variant[index];
+};
+
+export const TaskItem = ({
+  title,
+  isValid,
+  id,
+  currentListId,
+  listId,
+  userName,
+  userList,
+}) => {
   const [show, setShow] = useState(false);
   const [isCheck, setCheck] = useState(isValid);
   const [isEdit, setEdit] = useState(false);
@@ -25,12 +40,22 @@ export const TaskItem = ({ title, isValid, id, currentListId, listId }) => {
   };
 
   const handleCheck = () => {
-    setCheck(!isCheck);
-    const updatedTask = {
-      title: text,
-      isValid: !isCheck,
-      listId: listId,
-    };
+    let updatedTask;
+    if (isValid) {
+      setCheck("");
+      updatedTask = {
+        title: text,
+        isValid: "",
+        listId: listId,
+      };
+    } else {
+      setCheck(userName);
+      updatedTask = {
+        title: text,
+        isValid: userName,
+        listId: listId,
+      };
+    }
     dispatch(updateTask(id, currentListId, updatedTask));
   };
 
@@ -49,7 +74,12 @@ export const TaskItem = ({ title, isValid, id, currentListId, listId }) => {
       <div className="home_divider"></div>
       <div className="task_item">
         <div className="task_item_container">
-          <Checkbox onClick={handleCheck} checked={isCheck} />
+          <Checkbox
+            onClick={handleCheck}
+            checked={!!isCheck}
+            size="medium"
+            color={userColor(userList, isValid)}
+          />
           {isEdit ? (
             <>
               <Input value={text} onChange={(e) => setText(e.target.value)} />

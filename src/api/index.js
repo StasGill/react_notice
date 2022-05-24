@@ -9,7 +9,7 @@ const API = axios.create({ baseURL: url });
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
     req.headers.Authorization = `Bearer ${
-      JSON.parse(localStorage.getItem("profile")).token
+      JSON.parse(localStorage.getItem("profile"))?.token
     }`;
   }
 
@@ -30,6 +30,10 @@ export const signUp = (formData) => {
 
 export const addList = (formData) => {
   return API.post("/list", formData);
+};
+
+export const addShareList = (shareId) => {
+  return API.post("/list/share", shareId);
 };
 
 export const updateList = (formData) => {
