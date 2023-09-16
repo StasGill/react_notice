@@ -4,7 +4,7 @@
 .container {
     max-width: 1140px;
     min-width: 340px;
-    margin-bottom: 15px;
+    margin: 0 auto 15px auto;
     font-family: 'Rubik', sans-serif;
 
     @media (max-width: 450px) {
