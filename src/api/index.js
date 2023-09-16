@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const url = "http://localhost:4000/";
+//const url = "http://localhost:4000/";
 
-//const url = "https://node-notice.onrender.com";
+const url = "https://node-notice.onrender.com";
 
 const API = axios.create({ baseURL: url });
 
