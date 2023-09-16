@@ -29,6 +29,11 @@
 
     &_right {
         width: 50%;
+        margin: 0 auto;
+
+        &-header {
+            margin-top: 0;
+        }
 
         @media (max-width: 700px) {
             width: 100%;

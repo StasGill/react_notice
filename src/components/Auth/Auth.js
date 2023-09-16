@@ -74,15 +74,15 @@ export const Auth = () => {
   return (
     <div className="container">
       <div className="auth">
-        <div className="auth_left">
+        {/* <div className="auth_left">
           <h1 className="italic">
             Simple and easy notice app on all your devices.
           </h1>
           <ListIcon />
-        </div>
+        </div> */}
         {isAuth ? (
           <div className="auth_right">
-            <h1>Sign Up</h1>
+            <h1 className="auth_right-header">Sign Up</h1>
             <form onSubmit={handleSubmit}>
               <div className="input_container">
                 <Input
@@ -137,7 +137,7 @@ export const Auth = () => {
           </div>
         ) : (
           <div className="auth_right">
-            <h1>Sign In</h1>
+            <h1 className="auth_right-header">Sign In</h1>
             <form onSubmit={handleLogIn} autoComplete="off">
               <Input
                 placeholder="Email"

@@ -128,6 +128,8 @@ export const updateTask =
     try {
       const { data } = await api.updateTask(id, updatedTask);
 
+      console.log({ data });
+
       const currentList = await data.find((item) => item._id === currentListId);
 
       dispatch({ type: UPDATE_TASK, data, currentList });

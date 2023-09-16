@@ -40,23 +40,31 @@ export const TaskItem = ({
   };
 
   const handleCheck = () => {
-    let updatedTask;
-    if (isValid) {
-      setCheck("");
-      updatedTask = {
+    // let updatedTask;
+    // if (isValid) {
+    //   setCheck(false);
+    //   updatedTask = {
+    //     title: text,
+    //     isValid: false,
+    //     listId: listId,
+    //   };
+    // } else {
+    //   setCheck(true);
+    //   updatedTask = {
+    //     title: text,
+    //     isValid: true,
+    //     listId: listId,
+    //   };
+    // }
+    // dispatch(updateTask(id, currentListId, updatedTask));
+    dispatch(
+      updateTask(id, currentListId, {
         title: text,
-        isValid: "",
+        isValid: !isValid,
         listId: listId,
-      };
-    } else {
-      setCheck(userName);
-      updatedTask = {
-        title: text,
-        isValid: userName,
-        listId: listId,
-      };
-    }
-    dispatch(updateTask(id, currentListId, updatedTask));
+      })
+    );
+    setCheck(!isCheck);
   };
 
   const handleUpdate = () => {

@@ -12,7 +12,7 @@ function App() {
   const { isLoading } = useSelector((state) => state.user);
 
   return (
-    <>
+    <div className="main-container">
       <BrowserRouter>
         <Header />
         <Routes>
@@ -23,7 +23,7 @@ function App() {
         </Routes>
         {isLoading && <Spinner />}
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 
