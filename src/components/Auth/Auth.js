@@ -5,7 +5,7 @@ import { GoogleLogin } from "react-google-login";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 import "./styles.scss";
-import { ListIcon } from "../../assets/ListIcon";
+// import { ListIcon } from "../../assets/ListIcon";
 import { AUTH, SET_ERROR } from "../../constants/constants";
 import { signin, signup } from "../../actions/auth";
 import Alert from "@mui/material/Alert";
